@@ -2,8 +2,9 @@ import { Globe ,Paperclip ,ArrowUp } from "lucide-react";
 
 import Selectmodel from "./Selectmodel";
 import Chat from "@/api/Chat";
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import MarkdownRenderer from "./Markdown";
+
 
 
 type Msg ={
@@ -17,6 +18,7 @@ type Msg ={
 const ChatBox =()=>{
   const[input,setinput]=useState("");
   const [message,setmessage] =useState<Msg[]>([]);
+  const[recentusermesages ,setrecentusermesages]= useState<string[]>([]);
 
 
   const sendmessage=async()=>{
@@ -39,11 +41,9 @@ const ChatBox =()=>{
     }
 
 
-  }
+  };
 
-
-
-
+ 
 
 
    return (
@@ -51,19 +51,24 @@ const ChatBox =()=>{
       {/*chat area*/}
 
       <div className="flex-1 p-6 overflow-y-auto">
-      {message.map((m, i) => (
+       {message.map((m,i)=>(
+        <div
+        key={i}
+        className={`flex ${m.role=="user"? "justify-end":"justify-start"} `}>
+
           <div
-            key={i}
-            className={`max-w-[70%] p-3 rounded-lg break-words prose prose-invert ${
-              m.role === "user"
-                ? "self-end bg-[#3a2a3f]"
-                : "self-start bg-[#2f2c39]"
-            }`}
-          >
-            {/* Render markdown instead of plain text */}
-               <MarkdownRenderer markdown={m.content} />
-           </div>
-        ))}
+          className={`max-w-[70%] p-3 rounded-xl break-words prose prose-invert ${
+          m.role === "user"
+            ? "bg-[#3a2a3f] rounded-br-none"
+            : "bg-[#2f2c39] rounded-bl-none"
+        } `}>
+            <MarkdownRenderer markdown={m.content}/>
+          </div>
+          
+
+        </div>
+
+       ))}
       </div>
 
       <div className="p-4 border-t border-[#2c2a33]">

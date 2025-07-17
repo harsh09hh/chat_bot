@@ -1,27 +1,11 @@
+import type { FC } from "react";
 
-import { useState } from "react";
-import ReactMarkdown from "react-markdown";
-import { Input } from "@/components/ui/input"
-
-
+interface SidebarboxProps {
+  messages: string[];  
+}
 
 
 const Sidebarbox =()=>{
-
-
-    type Message={
-        role: "user"|"assistant";
-        content:string;
-    }
-    
-    interface allmeasages{
-        msg:string;
-    }
-
-    const dummymessages:allmeasages[] =[{
-        msg:"what is life"
-    },{msg:"should i kill my self"}
-];
 
 
     return(
@@ -38,6 +22,7 @@ const Sidebarbox =()=>{
                 <p className="text-gray-600 ">yeserday</p>
             </div>
 
+          
 
             <div className="text-sm text-white flex item-center gap-2 hover:bg-[#2f2c39] p-2 rounded cursor-pointer">
                 <span className="text-lg">Login</span>
