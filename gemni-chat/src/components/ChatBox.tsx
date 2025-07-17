@@ -3,13 +3,16 @@ import { Globe ,Paperclip ,ArrowUp } from "lucide-react";
 import Selectmodel from "./Selectmodel";
 import Chat from "@/api/Chat";
 import { useState } from "react";
+import MarkdownRenderer from "./Markdown";
 
 
 type Msg ={
   role:"user"|"assistant";
   content:string;
-
 }
+
+
+
 
 const ChatBox =()=>{
   const[input,setinput]=useState("");
@@ -49,16 +52,17 @@ const ChatBox =()=>{
 
       <div className="flex-1 p-6 overflow-y-auto">
       {message.map((m, i) => (
-           <div
+          <div
             key={i}
-            className={`max-w-[70%] p-3 rounded-lg ${
+            className={`max-w-[70%] p-3 rounded-lg break-words prose prose-invert ${
               m.role === "user"
                 ? "self-end bg-[#3a2a3f]"
                 : "self-start bg-[#2f2c39]"
             }`}
           >
-              {m.content}
-          </div>
+            {/* Render markdown instead of plain text */}
+               <MarkdownRenderer markdown={m.content} />
+           </div>
         ))}
       </div>
 
