@@ -26,14 +26,33 @@ const ChatBox =()=>{
     if(!text)return;
 
 
-    setmessage((m)=>[...m,{role:"user",content:text}]);
+    setmessage((m)=>[...m,{role:"user",content:text} ,{ role: "assistant", content: "" }]);
     setinput("");
 
 
-    try{
-      const aiReply =  await Chat(text);
-      setmessage((m)=>[...m,{role:"assistant",content:aiReply}]);
+    let streamedReply ="";
 
+
+    try{
+    
+      await Chat(text,(chunk)=>{
+        streamedReply += chunk;
+        setmessage((prevmessage)=>{
+          
+          const lastIndex = prevmessage.length-1;
+          const updated =[...prevmessage];
+          if(updated[lastIndex].role==="assistant"){
+            updated[lastIndex]={
+              ...updated[lastIndex],
+              content:streamedReply,
+            };
+
+          };
+          return updated;
+
+        });
+
+      });
     }
     catch(error){
       console.error(error);
@@ -50,11 +69,11 @@ const ChatBox =()=>{
     <div className="h-full flex flex-col justify-between bg-[#1e1b25] text-white rounded">
       {/*chat area*/}
 
-      <div className="flex-1 p-6 overflow-y-auto">
+      <div className="flex-1 p-6 overflow-y-auto ">
        {message.map((m,i)=>(
         <div
         key={i}
-        className={`flex ${m.role=="user"? "justify-end":"justify-start"} `}>
+        className={`flex ${m.role=="user"? "justify-end":"justify-start"}  `}>
 
           <div
           className={`max-w-[70%] p-3 rounded-xl break-words prose prose-invert ${

@@ -5,6 +5,7 @@ import { createGoogleGenerativeAI } from "@ai-sdk/google";
 import { generateText } from 'ai';
 import dotenv from "dotenv";
 import cors from "cors";
+import { streamText } from "ai";
 
 
 dotenv.config();
@@ -29,32 +30,34 @@ app.get("/", (req, res) => {
 
 
 
+app.post('/api/chat', async (req, res) => {
+  const { prompt } = req.body;
+  if (!prompt) {
+    return res.status(400).json({ error: 'Prompt is required' });
+  }
 
-app.post('/api/chat',async(req,res)=>{
-    const {prompt}= req.body;
-    if(!prompt){
-        res.status(500).json({error:"prompt is required"});
+  try {
+    res.setHeader('Content-Type', 'text/event-stream');
+    res.setHeader('Cache-Control', 'no-cache');
+    res.setHeader('Connection', 'keep-alive');
+
+    const result = await streamText({
+      model: googleAi('gemini-1.5-flash'),
+      prompt,
+    });
+
+    for await (const chunk of result.textStream  ) {
+      res.write(`data: ${chunk}\n\n`);
     }
 
-    try{
-
-        const result  =await generateText({
-            model:googleAi('gemini-1.5-flash'),
-            prompt:prompt,
-        })
-        res.json({response: result.text});
-
-
-    }catch(error){
-        console.error("Gemni error",error);
-        res.status(500).json({error:"failed to generate resonse"});
-
-    }
-
-
-
-
-})
+    res.write(`data: [DONE]\n\n`);
+    res.end();
+  } catch (error) {
+    console.error('Gemini stream error:', error);
+    res.status(500).write('data: [ERROR]\n\n');
+    res.end();
+  }
+});
 
 
 app.listen(PORT,()=>{
