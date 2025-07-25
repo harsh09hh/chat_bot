@@ -37,15 +37,12 @@ const MarkdownRenderer: React.FC<MarkdownRendererProps> = ({ markdown }) => {
       );
     }
 
-    // For code blocks, use SyntaxHighlighter
-    // We explicitly exclude 'node' and 'ref' from 'rest' props as SyntaxHighlighter
-    // might not expect them or might expect a different type for 'ref'.
+
     const { ref, ...syntaxHighlighterProps } = rest; // Destructure ref out if it exists
 
     return (
       <SyntaxHighlighter
-        // Casting 'style' to any is generally needed due to type mismatches
-        // between react-syntax-highlighter's internal types and the theme objects.
+  
         style={oneDark as any}
         language={language} // Pass the detected language for highlighting
         PreTag="div" // Use 'div' as the wrapper for the <pre> tag for better styling control
@@ -58,11 +55,11 @@ const MarkdownRenderer: React.FC<MarkdownRendererProps> = ({ markdown }) => {
     );
   };
 
-  // Define the custom components to be used by ReactMarkdown
+
   const components: Components = {
-    // Cast codeRenderer to Components['code'] to satisfy ReactMarkdown's type expectations
+
     code: codeRenderer as Components['code'],
-    // Add other custom renderers here if needed
+
   };
 
   return (
