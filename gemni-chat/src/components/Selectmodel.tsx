@@ -10,8 +10,10 @@ import {
 
 const Selectmodel=()=>{
 
+
+
     return(
-                <Select>
+                <Select >
                 <SelectTrigger className="w-[180px]  bg-[#1e1b25] border border-[#3a3644] rounded px-3 py-1 text-white text-sm">
                   <SelectValue placeholder="select a provider" />
                 </SelectTrigger>

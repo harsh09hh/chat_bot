@@ -18,7 +18,6 @@ type Msg ={
 const ChatBox =()=>{
   const[input,setinput]=useState("");
   const [message,setmessage] =useState<Msg[]>([]);
-  const[recentusermesages ,setrecentusermesages]= useState<string[]>([]);
 
 
   const sendmessage=async()=>{
@@ -34,25 +33,31 @@ const ChatBox =()=>{
 
 
     try{
-    
-      await Chat(text,(chunk)=>{
-        streamedReply += chunk;
-        setmessage((prevmessage)=>{
-          
-          const lastIndex = prevmessage.length-1;
-          const updated =[...prevmessage];
-          if(updated[lastIndex].role==="assistant"){
-            updated[lastIndex]={
-              ...updated[lastIndex],
-              content:streamedReply,
-            };
 
-          };
-          return updated;
+await Chat(text, (chunk) => {
+  streamedReply += chunk + "\n";
+  setmessage(prev => {
+    const last = prev.length - 1;
+    const updated = [...prev];
+    if (updated[last].role === "assistant") {
+      updated[last] = { ...updated[last], content: streamedReply };
+    }
+    return updated;
+  });
+});
 
-        });
+// final flush
+setmessage(prev => {
+  const last = prev.length - 1;
+  const updated = [...prev];
+  if (updated[last].role === "assistant") {
+    updated[last] = { ...updated[last], content: streamedReply };
+  }
+  return updated;
+});
 
-      });
+
+
     }
     catch(error){
       console.error(error);
@@ -104,7 +109,7 @@ const ChatBox =()=>{
                 />
           <div className="flex item-center gap-2 justify-between flex-wrap">
             <div className="flex item-center gap-2 flex-wrap">
-              <Selectmodel/>
+              <Selectmodel  />
 
               <button className="flex item-center gap-1 px-3 py-1 bg-[#1e1b25] text-sm rounded-full border border-[#3a3644] text-white hover:text-white">
                 <Globe size={16}/> Search
