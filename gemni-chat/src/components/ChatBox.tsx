@@ -5,6 +5,9 @@ import Chat from "@/api/Chat";
 import { useState,useEffect } from "react";
 import MarkdownRenderer from "./Markdown";
 
+import { getLastTenUserMessages } from "@/action/functions";
+
+
 
 
 type Msg ={
@@ -18,6 +21,9 @@ type Msg ={
 const ChatBox =()=>{
   const[input,setinput]=useState("");
   const [message,setmessage] =useState<Msg[]>([]);
+
+
+ useEffect(()=>{getLastTenUserMessages(message)},[message])
 
 
   const sendmessage=async()=>{
@@ -34,7 +40,7 @@ const ChatBox =()=>{
 
     try{
 
-await Chat(text, (chunk) => {
+await Chat(text, getLastTenUserMessages(message), (chunk) => {
   streamedReply += chunk + "\n";
   setmessage(prev => {
     const last = prev.length - 1;

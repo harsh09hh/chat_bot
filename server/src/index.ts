@@ -1,4 +1,3 @@
-// server.js (or your entry point)
 import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
@@ -16,13 +15,13 @@ const googleAi = createGoogleGenerativeAI({
 });
 
 app.post("/api/chat", async (req, res) => {
-  const { prompt } = req.body;
+  const { prompt ,lastten } = req.body;
   if (!prompt) {
     return res.status(400).json({ error: "Prompt is required" });
   }
 
   try {
-    // ——— SSE setup ———
+    
     res.setHeader("Content-Type", "text/event-stream");
     res.setHeader("Cache-Control", "no-cache, no-transform");
     res.setHeader("Connection", "keep-alive");
@@ -30,23 +29,28 @@ app.post("/api/chat", async (req, res) => {
 
     const result = await streamText({
       model: googleAi("gemini-1.5-flash"),
-      prompt,
+      prompt :` You are a helpful chatbot.
+                You will be provided with:
+                1. **lastten** - the last 10 exchanges between the user and assistant.
+                2. **prompt** - the user's current question.
+
+                If relevant, use the context from **lastten** to help answer **prompt**.
+                Respond **only** to the current prompt; do not repeat the lastten text.
+
+               lastten:${lastten}
+               prompt:${prompt}`,
     });
 
-    // ——— Stream each chunk, splitting on newlines ———
+    
     for await (const chunk of result.textStream) {
-      // chunk may contain multiple lines or partial lines
+      
       const lines = chunk.split(/\r?\n/);
       for (const line of lines) {
-        // Optional: skip purely-empty lines if you don’t want them
-        // if (!line.trim()) continue;
-
-        // Emit each as its own SSE event
+       
         res.write(`data: ${line}\n\n`);
       }
     }
 
-    // ——— Final sentinel ———
     res.write("data: [DONE]\n\n");
     res.end();
   } catch (err) {

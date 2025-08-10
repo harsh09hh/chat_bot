@@ -4,6 +4,11 @@ interface SidebarboxProps {
   messages: string[];  
 }
 
+type Msg ={
+    role:"user"|"assistant";
+    content:string;
+}
+
 
 const Sidebarbox =()=>{
 
