@@ -1,10 +1,19 @@
-:
 
 🧠 Multi-LLM Chatbot App
+
+
 A fast, responsive, and customizable chatbot web app —  where users can choose from multiple LLMs (Large Language Models) and chat with them in real time.
 Built with React, TailwindCSS, ShadCN, and powered by Express backend and Vercel’s Gemini SDK.
 
-🚀 Features
+
+
+
+
+
+🚀 Features ---
+
+
+
 🔄 Multi-Model Switching — Choose from multiple LLMs (e.g., Gemini Flash, Flash-mini, etc.)
 
 ⚡ Fast and responsive UI using React + Tailwind + ShadCN UI
@@ -17,8 +26,12 @@ Built with React, TailwindCSS, ShadCN, and powered by Express backend and Vercel
 
 
 
-🛠️ Tech Stack
-Frontend
+🛠️ Tech Stack ---
+
+
+Frontend --
+
+
 React – Component-based UI
 
 Tailwind CSS – Utility-first styling
@@ -29,7 +42,10 @@ React Markdown – For clean markdown-rendered responses
 
 Lucide Icons – Modern icons for model selector and chat UI
 
-Backend
+
+
+Backend --
+
 Express.js – Lightweight Node.js server
 
 Vercel Gemini SDK – Handles chat completions based on selected LLM
