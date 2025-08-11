@@ -13,17 +13,15 @@ const Sidebarbox = () => {
 
   return (
     <div className="hidden md:flex w-[250px] flex-col justify-between bg-gradient-to-b from-[#1d131a] to-[#100a0e] border-r border-[#2c2a33]">
-      {/* Top section */}
+    
       <div className="p-4 flex-1 overflow-y-auto">
-        {/* App Title */}
+     
         <h1 className="text-lg font-semibold text-white mb-4">T3.chat</h1>
 
-        {/* New Chat Button */}
         <button className="w-full flex items-center justify-center gap-2 py-2 px-4 mb-4 bg-gradient-to-r from-[#7b255d] to-[#5a1b43] hover:from-[#922d6f] hover:to-[#6e2454] rounded-md text-white text-sm font-medium">
           <Plus size={14} /> New Chat
         </button>
 
-        {/* Search Input */}
         <div className="mb-6">
           <input
             type="text"
@@ -34,7 +32,6 @@ const Sidebarbox = () => {
           />
         </div>
 
-        {/* Last 7 Days */}
         <div className="mb-4">
           <div className="text-xs text-pink-400 mb-1">Last 7 Days</div>
           {last7Days.map((item, idx) => (
@@ -47,7 +44,6 @@ const Sidebarbox = () => {
           ))}
         </div>
 
-        {/* Last 30 Days */}
         <div>
           <div className="text-xs text-pink-400 mb-1">Last 30 Days</div>
           {last30Days.map((item, idx) => (
@@ -61,7 +57,6 @@ const Sidebarbox = () => {
         </div>
       </div>
 
-      {/* Login Button */}
       <div className="p-4 border-t border-[#2c2a33]">
         <div className="flex items-center gap-2 text-sm text-white hover:bg-[#2f2c39] p-2 rounded cursor-pointer">
           <LogIn size={14} /> Login

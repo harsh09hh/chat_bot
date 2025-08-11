@@ -54,7 +54,7 @@ await Chat(text, getLastTenUserMessages(message), (chunk) => {
   });
 });
 
-// final flush
+
 setmessage(prev => {
   const last = prev.length - 1;
   const updated = [...prev];
@@ -80,8 +80,7 @@ setmessage(prev => {
 
    return (
     <div className="h-full flex flex-col justify-between bg-[#211c26] text-white rounded">
-      {/*chat area*/}
-
+   
       {message.length===0 
       ?(
     <div className="flex flex-col items-center justify-center h-full text-center text-white px-4">
