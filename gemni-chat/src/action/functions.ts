@@ -18,3 +18,12 @@ export  function getLastTenUserMessages(messages :Msg[]){
     return lastTen.map(m=>`${m.role.toUpperCase()} : ${m.content}.`).join("/n");
 
 };
+
+
+export  function getallusermessages(messages :Msg[]):string[]{
+
+  const usermessagesarray = messages.filter(m=>m.role ==="user");
+  
+  return  usermessagesarray.map(m=>`${m.role.toUpperCase()}:${m.content}.`);
+
+}

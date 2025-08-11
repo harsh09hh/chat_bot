@@ -1,43 +1,74 @@
-import type { FC } from "react";
+import { LogIn, Plus } from "lucide-react";
+import { useState } from "react";
 
-interface SidebarboxProps {
-  messages: string[];  
-}
+const Sidebarbox = () => {
+  const [search, setSearch] = useState("");
 
-type Msg ={
-    role:"user"|"assistant";
-    content:string;
-}
+  // Example conversation lists
+  const last7Days = ["Meaning of Life Inquiry"];
+  const last30Days = [
+    "React Chatbot Message Func...",
+    "Sci-fi novel outline in post-ap..."
+  ];
 
+  return (
+    <div className="hidden md:flex w-[250px] flex-col justify-between bg-gradient-to-b from-[#1d131a] to-[#100a0e] border-r border-[#2c2a33]">
+      {/* Top section */}
+      <div className="p-4 flex-1 overflow-y-auto">
+        {/* App Title */}
+        <h1 className="text-lg font-semibold text-white mb-4">T3.chat</h1>
 
-const Sidebarbox =()=>{
+        {/* New Chat Button */}
+        <button className="w-full flex items-center justify-center gap-2 py-2 px-4 mb-4 bg-gradient-to-r from-[#7b255d] to-[#5a1b43] hover:from-[#922d6f] hover:to-[#6e2454] rounded-md text-white text-sm font-medium">
+          <Plus size={14} /> New Chat
+        </button>
 
-
-    return(
-        <div  className=" hidden md:flex w-[250px] bg-[#1a171f] flex-col justify-between p-4  border-r border-[#2c2a33]">
-            <div>
-                <h1 className="text-2xl font-bold mb-4 text-white text-center">T3.chat</h1>
-                <button className="w-full  py-2 px-4 mb-4 bg-[#7b255d] hover:bg-[#922d6f] rounded text-white font-semibold "> New Chat</button>
-            
-            <input type="text"
-            placeholder="search"
-            className="w-full p-2 rounded px-4 text-sm text-white" />
-
-            <div className="mg-6">
-                <p className="text-gray-600 ">yeserday</p>
-            </div>
-
-          
-
-            <div className="text-sm text-white flex item-center gap-2 hover:bg-[#2f2c39] p-2 rounded cursor-pointer">
-                <span className="text-lg">Login</span>
-            </div>
-
-
-     
-            </div>
+        {/* Search Input */}
+        <div className="mb-6">
+          <input
+            type="text"
+            placeholder="Search your threads..."
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+            className="w-full py-1.5 px-3 rounded-md bg-[#19141d] text-sm text-white placeholder-gray-400 focus:outline-none"
+          />
         </div>
-    );
-}
+
+        {/* Last 7 Days */}
+        <div className="mb-4">
+          <div className="text-xs text-pink-400 mb-1">Last 7 Days</div>
+          {last7Days.map((item, idx) => (
+            <div
+              key={idx}
+              className="text-sm text-white truncate hover:bg-[#2a1d25] p-2 rounded cursor-pointer"
+            >
+              {item}
+            </div>
+          ))}
+        </div>
+
+        {/* Last 30 Days */}
+        <div>
+          <div className="text-xs text-pink-400 mb-1">Last 30 Days</div>
+          {last30Days.map((item, idx) => (
+            <div
+              key={idx}
+              className="text-sm text-white truncate hover:bg-[#2a1d25] p-2 rounded cursor-pointer"
+            >
+              {item}
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Login Button */}
+      <div className="p-4 border-t border-[#2c2a33]">
+        <div className="flex items-center gap-2 text-sm text-white hover:bg-[#2f2c39] p-2 rounded cursor-pointer">
+          <LogIn size={14} /> Login
+        </div>
+      </div>
+    </div>
+  );
+};
 
 export default Sidebarbox;

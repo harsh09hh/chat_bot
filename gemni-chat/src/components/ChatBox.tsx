@@ -1,11 +1,11 @@
-import { Globe ,Paperclip ,ArrowUp } from "lucide-react";
+import { Globe ,Paperclip ,ArrowUp, Divide } from "lucide-react";
 
 import Selectmodel from "./Selectmodel";
 import Chat from "@/api/Chat";
 import { useState,useEffect } from "react";
 import MarkdownRenderer from "./Markdown";
 
-import { getLastTenUserMessages } from "@/action/functions";
+import { getLastTenUserMessages ,getallusermessages} from "@/action/functions";
 
 
 
@@ -23,7 +23,9 @@ const ChatBox =()=>{
   const [message,setmessage] =useState<Msg[]>([]);
 
 
- useEffect(()=>{getLastTenUserMessages(message)},[message])
+ useEffect(()=>{getLastTenUserMessages(message)
+                getallusermessages(message)
+                },[message])
 
 
   const sendmessage=async()=>{
@@ -77,10 +79,46 @@ setmessage(prev => {
 
 
    return (
-    <div className="h-full flex flex-col justify-between bg-[#1e1b25] text-white rounded">
+    <div className="h-full flex flex-col justify-between bg-[#211c26] text-white rounded">
       {/*chat area*/}
 
-      <div className="flex-1 p-6 overflow-y-auto ">
+      {message.length===0 
+      ?(
+    <div className="flex flex-col items-center justify-center h-full text-center text-white px-4">
+      <h1 className="text-3xl font-bold mb-6">How can I help you?</h1>
+      <div className="flex gap-3 justify-center mb-6 flex-wrap">
+        {["Create", "Explore", "Code", "Learn"].map((label) => (
+          <button
+            key={label}
+            className="bg-[#2f2c39] hover:bg-[#3a3041] text-white py-2 px-4 rounded-md"
+          >
+            {label}
+          </button>
+        ))}
+      </div>
+      <div className="w-full max-w-md text-left text-gray-300 space-y-4">
+        {[
+          "How does AI work?",
+          'Are black holes real?',
+          'How many Rs are in the word "strawberry"?',
+          "What is the meaning of life?"
+        ].map((q, i) => (
+          <button
+            key={i}
+            className="block w-full text-left px-4 py-2 hover:bg-[#3a3041] rounded"
+            onClick={() => {
+              setinput(q);
+              
+            }}
+          >
+            {q}
+          </button>
+        ))}
+      </div>
+    </div>
+  )
+      
+      :(<div className="flex-1 p-6 overflow-y-auto ">
        {message.map((m,i)=>(
         <div
         key={i}
@@ -99,7 +137,7 @@ setmessage(prev => {
         </div>
 
        ))}
-      </div>
+      </div>)}
 
       <div className="p-4 border-t border-[#2c2a33]">
         <div className="bg-[#2a2633]/50 backdrop-blur-sm rounded-2xl p-4 border border-[#3a3644] w-full">
