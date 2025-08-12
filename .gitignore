@@ -23,3 +23,5 @@ dist-ssr
 *.sln
 *.sw?
 *.env
+# Allow the example env file
+!.env.example
