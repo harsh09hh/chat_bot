@@ -11,23 +11,26 @@
 ---
 
 ## 🚀 Overview  
+**Multi-LLM Chatbot App** is a **fast, responsive, and customizable chatbot web app** where users can **switch between multiple LLMs** and chat with them in **real-time**.  
 
-**Multi-LLM Chatbot App** is a **fast, responsive, and customizable chatbot web app** where users can **choose from multiple LLMs** and chat with them in **real time**.  
-
-Built with **React, TailwindCSS, ShadCN UI** for the frontend, and powered by an **Express backend with Vercel’s Gemini SDK** for model inference.  
+It is built with **React, TailwindCSS, ShadCN UI** for the frontend, and powered by an **Express backend with Vercel’s Gemini SDK** for model inference.  
 
 ---
 
-## ✨ Home Page
-(https://github.com/harsh09hh/chat_bot/blob/66ef795edd639ff1e5a01a5a7d1e680ae366fd6e/home.png)
-(https://github.com/harsh09hh/chat_bot/blob/66ef795edd639ff1e5a01a5a7d1e680ae366fd6e/exg.png)
-## ✨ Features  
+## ✨ Screenshots  
+<p align="center">
+  <img src="https://github.com/harsh09hh/chat_bot/blob/66ef795edd639ff1e5a01a5a7d1e680ae366fd6e/home.png" width="400" />
+  <img src="https://github.com/harsh09hh/chat_bot/blob/66ef795edd639ff1e5a01a5a7d1e680ae366fd6e/exg.png" width="400" />
+</p>
 
-- 🔄 **Multi-Model Switching** — Select from multiple LLMs (e.g., Gemini Flash, Flash-mini, etc.)  
-- ⚡ **Fast & Responsive UI** — Built with React + Tailwind + ShadCN UI  
-- 🧠 **LLM Integration via Gemini SDK** — Efficient backend inference handling  
-- 📤 **Streaming Responses** — Real-time AI responses rendered with React Markdown  
-- 🧩 **Modular & Extensible** — Easy to add new models/providers  
+---
+
+## ✨ Features  
+- 🔄 **Multi-Model Switching** — Choose from multiple LLMs (e.g., Gemini Flash, Flash-mini, etc.)  
+- ⚡ **Fast & Responsive UI** — Optimized with React + Tailwind + ShadCN UI  
+- 🧠 **LLM Integration via Gemini SDK** — Handles inference and responses seamlessly  
+- 📤 **Streaming Responses** — Real-time AI replies with smooth rendering using React Markdown  
+- 🧩 **Modular & Extensible** — Easily add more models/providers  
 
 ---
 
@@ -36,14 +39,14 @@ Built with **React, TailwindCSS, ShadCN UI** for the frontend, and powered by an
 ### 🎨 Frontend  
 - **React** – Component-based UI  
 - **Tailwind CSS** – Utility-first styling  
-- **ShadCN/UI** – Reusable UI components  
-- **React Markdown** – Renders clean markdown AI responses  
-- **Lucide Icons** – Modern icons for model selector & chat UI  
+- **ShadCN/UI** – Prebuilt, accessible UI components  
+- **React Markdown** – Clean markdown rendering for AI responses  
+- **Lucide Icons** – Lightweight icon set for UI  
 
 ### ⚙️ Backend  
 - **Express.js** – Lightweight Node.js server  
-- **Vercel Gemini SDK** – Handles LLM chat completions  
-- **CORS & JSON Middleware** – Secure structured API handling  
+- **Vercel Gemini SDK** – Model inference & chat completions  
+- **CORS & JSON Middleware** – Secure API handling  
 
 ---
 
