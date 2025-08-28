@@ -18,10 +18,16 @@ It is built with **React, TailwindCSS, ShadCN UI** for the frontend, and powered
 ---
 
 ## ✨ Screenshots  
-<p align="center">
-  <img src="https://github.com/harsh09hh/chat_bot/blob/66ef795edd639ff1e5a01a5a7d1e680ae366fd6e/home.png" width="400" />
-  <img src="https://github.com/harsh09hh/chat_bot/blob/66ef795edd639ff1e5a01a5a7d1e680ae366fd6e/exg.png" width="400" />
-</p>
+
+<div align="center">
+  <img src="https://github.com/harsh09hh/chat_bot/blob/66ef795edd639ff1e5a01a5a7d1e680ae366fd6e/home.png" width="600" />
+</div>
+
+<br/><br/>
+
+<div align="center">
+  <img src="https://github.com/harsh09hh/chat_bot/blob/66ef795edd639ff1e5a01a5a7d1e680ae366fd6e/exg.png" width="600" />
+</div>
 
 ---
 
