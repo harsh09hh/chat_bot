@@ -18,6 +18,9 @@ Built with **React, TailwindCSS, ShadCN UI** for the frontend, and powered by an
 
 ---
 
+## ✨ Home Page
+(https://github.com/harsh09hh/chat_bot/blob/66ef795edd639ff1e5a01a5a7d1e680ae366fd6e/home.png)
+(https://github.com/harsh09hh/chat_bot/blob/66ef795edd639ff1e5a01a5a7d1e680ae366fd6e/exg.png)
 ## ✨ Features  
 
 - 🔄 **Multi-Model Switching** — Select from multiple LLMs (e.g., Gemini Flash, Flash-mini, etc.)  
