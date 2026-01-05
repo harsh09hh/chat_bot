@@ -12,7 +12,7 @@ const Sidebarbox = () => {
   ];
 
   return (
-    <div className="hidden md:flex w-[250px] flex-col justify-between bg-gradient-to-b from-[#1d131a] to-[#100a0e] border-r border-[#2c2a33]">
+    <div className="h-full w-full bg-gradient-to-b from-[#1a1120] via-[#140e19] to-[#0c0810] text-white flex flex-col">
     
       <div className="p-4 flex-1 overflow-y-auto">
      
