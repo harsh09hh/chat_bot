@@ -20,9 +20,9 @@ const Selectmodel=()=>{
                 <SelectContent className="bg-[#1e1b25] text-white border border-[#3a3644]">
                   <SelectGroup>
                     <SelectLabel>selct a provider</SelectLabel>
-                    <SelectItem value="Gemni 2.5 Flash">Gemni 2.5 Flash</SelectItem>
-                    <SelectItem value="Gemni 2.5 Flash Lite">Gemni 2.5 Flash Lite</SelectItem>
-                    <SelectItem value="Gemni 2.5 Pro">Gemni 2.5 Pro</SelectItem>
+                    <SelectItem value="Gemini 2.5 Flash">Gemini 2.5 Flash</SelectItem>
+                    <SelectItem value="Gemini 2.5 Flash Lite">Gemini 2.5 Flash Lite</SelectItem>
+                    <SelectItem value="Gemini 2.5 Pro">Gemini 2.5 Pro</SelectItem>
                     <SelectItem value="o4-mini">o4-mini</SelectItem>
                     <SelectItem value="Claude 4 Sonnet">Claude 4 Sonnet</SelectItem>
                   </SelectGroup>

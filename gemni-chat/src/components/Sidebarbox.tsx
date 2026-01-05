@@ -5,7 +5,7 @@ const Sidebarbox = () => {
   const [search, setSearch] = useState("");
 
   // Example conversation lists
-  const last7Days = ["Meaning of Life Inquiry"];
+  const last7Days = ["Meaning of Life "];
   const last30Days = [
     "React Chatbot Message Func...",
     "Sci-fi novel outline in post-ap..."

@@ -33,7 +33,7 @@ const ChatBox =()=>{
     if(!text)return;
 
 
-    setmessage((m)=>[...m,{role:"user",content:text} ,{ role: "assistant", content: "" }]);
+     setmessage((m)=>[...m,{role:"user",content:text} ,{ role: "assistant", content: "" }]);
     setinput("");
 
 
