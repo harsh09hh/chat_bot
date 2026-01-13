@@ -8,7 +8,7 @@ import MarkdownRenderer from "./Markdown";
 import { getLastTenUserMessages ,getallusermessages} from "@/action/functions";
 
 
-
+import ModelSelector from "./ModelSelector";
 
 type Msg ={
   role:"user"|"assistant";
@@ -21,7 +21,7 @@ type Msg ={
 const ChatBox =()=>{
   const[input,setinput]=useState("");
   const [message,setmessage] =useState<Msg[]>([]);
-
+  const [model, setModel] = useState("llama");
 
  useEffect(()=>{getLastTenUserMessages(message)
                 getallusermessages(message)
@@ -152,7 +152,7 @@ setmessage(prev => {
                 />
           <div className="flex item-center gap-2 justify-between flex-wrap">
             <div className="flex item-center gap-2 flex-wrap">
-              <Selectmodel  />
+              <ModelSelector selected={model} setSelected={setModel} />
 
               <button className="flex item-center gap-1 px-3 py-1 bg-[#1e1b25] text-sm rounded-full border border-[#3a3644] text-white hover:text-white">
                 <Globe size={16}/> Search
