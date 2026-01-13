@@ -112,7 +112,15 @@ export default function ModelSelector({ selected, setSelected }: Props) {
           />
 
           {/* Modal Panel */}
-          <div className="fixed z-50 top-24 left-1/2 -translate-x-1/2 w-[1100px] max-w-[95vw] max-h-[500px] bg-[#1a1620] border border-[#3a3644] rounded-xl shadow-2xl flex overflow-hidden">
+        <div className="fixed z-50 
+  top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2
+  w-[1100px] max-w-[95vw] 
+  h-[85vh] min-h-0
+  bg-[#1a1620] border border-[#3a3644] 
+  rounded-xl shadow-2xl 
+  flex overflow-hidden">
+
+
             
             {/* Left Sidebar - Providers */}
             <div className="w-20 border-r border-[#3a3644] bg-[#0f0c12] flex flex-col items-center py-4 gap-2 overflow-y-auto">
