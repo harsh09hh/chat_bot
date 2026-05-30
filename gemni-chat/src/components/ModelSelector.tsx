@@ -72,6 +72,8 @@ const providers = [
   { id: "minimax", name: "MiniMax", logo: "Ⓜ" },
 ];
 
+
+
 export default function ModelSelector({ selected, setSelected }: Props) {
   const [open, setOpen] = useState(false);
   const [search, setSearch] = useState("");
